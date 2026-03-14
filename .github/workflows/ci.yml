@@ -1,23 +1,28 @@
 name: Java CI Pipeline
 
-on: push
+on:
+  push:
+    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
-          java-version: '17'
           distribution: 'temurin'
+          java-version: '17'
 
-      - name: Compile Java
+      - name: Show Java Version
+        run: java -version
+
+      - name: Compile Java Code
         run: javac Main.java
 
-      - name: Run Java
+      - name: Run Java Program
         run: java Main
