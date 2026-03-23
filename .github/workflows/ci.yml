@@ -1,11 +1,8 @@
-name: Java CI Pipeline
+name: Java CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
-
-  pull_request:
-    branches: [ main ]
+    branches: ["*"]
 
 jobs:
   build:
@@ -30,13 +27,12 @@ jobs:
       - name: Run Java Program
         run: java Main
 
-
-        #  CD STARTS HERE
+      # 🔥 CD STARTS HERE
 
       - name: Create JAR File
         run: jar cvf app.jar Main.class
 
-      - name: Upload Artifact (Deployment Simulation)
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
           name: java-app
