@@ -29,3 +29,18 @@ jobs:
 
       - name: Run Java Program
         run: java Main
+
+
+        #  CD STARTS HERE
+
+      - name: Create JAR File
+        run: jar cvf app.jar Main.class
+
+      - name: Upload Artifact (Deployment Simulation)
+        uses: actions/upload-artifact@v3
+        with:
+          name: java-app
+          path: app.jar
+
+      - name: Deploy Step
+        run: echo "🚀 Application deployed successfully"
